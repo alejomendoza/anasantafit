@@ -525,4 +525,7 @@ const styles = StyleSheet.create({
     height: 56,
     marginHorizontal: 60,
   },
+  newStyle: {
+    width: 10,
+  },
 });
