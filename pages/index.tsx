@@ -709,7 +709,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     minHeight: 580,
-    marginVertical: 40,
+    marginBottom: 40,
   },
   igLogo: {
     width: 61,
