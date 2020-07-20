@@ -556,6 +556,7 @@ export default function App() {
             alignItems: 'flex-end',
             paddingRight: 60,
             justifyContent: 'space-around',
+            marginBottom: 0,
           },
         ]}
         imageStyle={{ borderRadius: 6 }}
