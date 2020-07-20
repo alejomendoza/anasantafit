@@ -1,8 +1,17 @@
 // @generated: @expo/next-adapter@2.1.20
 import React from 'react';
-import { StyleSheet, ImageBackground, Image, View } from 'react-native';
+import {
+  StyleSheet,
+  ImageBackground,
+  Image,
+  View,
+  TextInput,
+  Picker,
+  Button,
+} from 'react-native';
 import { H1, P, H2, Section, Main, BR } from '@expo/html-elements';
 import { useFonts } from 'expo-font';
+import { PayPalButton } from 'react-paypal-button-v2';
 
 const image = {
   uri: 'https://media-public.canva.com/MADGwOBbEnA/5/screen_2x.jpg',
@@ -42,6 +51,61 @@ export default function App() {
     BryndanWrite: require('../assets/BryndanWrite.woff'),
     LeagueGothic: require('../assets/LeagueGothic.woff'),
   });
+  // const [email, changeEmail] = React.useState('Email');
+  // const [name, changeName] = React.useState('Nombre');
+  const [edad, changeEdad] = React.useState(0);
+  const [estatura, changeEstatura] = React.useState(0);
+  const [peso, changePeso] = React.useState(0);
+
+  const [selectedValue, setSelectedValue] = React.useState('Hombre');
+  const [alimentacion, setAlimentacion] = React.useState('Omnivoro');
+  const [resultado, setResultado] = React.useState(0);
+  const [tipo, setTipo] = React.useState(0);
+
+  const onPressCalcular = () => {
+    let result = 10 * peso + 6.25 * estatura - 5 * edad;
+    if (selectedValue === 'Hombre') {
+      result = result + 5;
+      result = result * 1.4 * 0.75;
+      setResultado(result);
+    } else {
+      result = result - 161;
+      result = result * 1.4 * 0.75;
+      setResultado(result);
+    }
+
+    if (result > 1000 && result < 1499) {
+      if (alimentacion === 'Omnivoro') {
+        setTipo(0);
+      } else {
+        setTipo(4);
+      }
+    }
+
+    if (result > 1500 && result < 1799) {
+      if (alimentacion === 'Omnivoro') {
+        setTipo(1);
+      } else {
+        setTipo(5);
+      }
+    }
+
+    if (result > 1800 && result < 2199) {
+      if (alimentacion === 'Omnivoro') {
+        setTipo(2);
+      } else {
+        setTipo(6);
+      }
+    }
+
+    if (result > 2200) {
+      if (alimentacion === 'Omnivoro') {
+        setTipo(3);
+      } else {
+        setTipo(7);
+      }
+    }
+  };
 
   if (!loaded) {
     return null;
@@ -169,186 +233,265 @@ export default function App() {
       </ImageBackground>
       <ImageBackground
         source={image4}
-        style={styles.section}
+        style={[styles.section, { minHeight: 680 }]}
         imageStyle={{ borderRadius: 6 }}
       >
         {' '}
         <View style={styles.whiteFrame}>
           <H2 style={styles.titleNormal}>Descubre cuál es tu plan!</H2>
         </View>
-      </ImageBackground>
-      <ImageBackground
-        source={image5}
-        style={[
-          styles.section,
-          {
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-          },
-        ]}
-        imageStyle={{ borderRadius: 6 }}
-      >
         <View
           style={[
             styles.whiteFrame,
             {
-              width: 240,
-              height: 180,
+              minWidth: 360,
               padding: 20,
-              margin: 10,
-              backgroundColor: 'white',
+              marginBottom: 20,
             },
           ]}
         >
-          <H2 style={[styles.subTitle, { lineHeight: 50, margin: 0 }]}>
-            GUÍA A
-          </H2>
-          <P style={{ textAlign: 'center' }}>
-            Esta guía esta diseñada para personas con un requerimiento calórico
-            entre 1200 y 1500 calorias diarias.
-          </P>
-        </View>
-        <View
-          style={[
-            styles.whiteFrame,
-            {
-              width: 240,
-              height: 180,
-              padding: 20,
-              margin: 10,
-              backgroundColor: 'white',
-            },
-          ]}
-        >
-          <H2 style={[styles.subTitle, { lineHeight: 50, margin: 0 }]}>
-            GUÍA A
-          </H2>
-          <P style={{ textAlign: 'center' }}>
-            Esta guía esta diseñada para personas con un requerimiento calórico
-            entre 1200 y 1500 calorias diarias.
-          </P>
-        </View>
-        <View
-          style={[
-            styles.whiteFrame,
-            {
-              width: 240,
-              height: 180,
-              padding: 20,
-              margin: 10,
-              backgroundColor: 'white',
-            },
-          ]}
-        >
-          <H2 style={[styles.subTitle, { lineHeight: 50, margin: 0 }]}>
-            GUÍA A
-          </H2>
-          <P style={{ textAlign: 'center' }}>
-            Esta guía esta diseñada para personas con un requerimiento calórico
-            entre 1200 y 1500 calorias diarias.
-          </P>
-        </View>
-        <View
-          style={[
-            styles.whiteFrame,
-            {
-              width: 240,
-              height: 180,
-              padding: 20,
-              margin: 10,
-              backgroundColor: 'white',
-            },
-          ]}
-        >
-          <H2 style={[styles.subTitle, { lineHeight: 50, margin: 0 }]}>
-            GUÍA A
-          </H2>
-          <P style={{ textAlign: 'center' }}>
-            Esta guía esta diseñada para personas con un requerimiento calórico
-            entre 1200 y 1500 calorias diarias.
-          </P>
-        </View>
-        <View
-          style={[
-            styles.whiteFrame,
-            {
-              width: 240,
-              height: 180,
-              padding: 20,
-              margin: 10,
-              backgroundColor: 'white',
-            },
-          ]}
-        >
-          <H2 style={[styles.subTitle, { lineHeight: 50, margin: 0 }]}>
-            GUÍA A
-          </H2>
-          <P style={{ textAlign: 'center' }}>
-            Esta guía esta diseñada para personas con un requerimiento calórico
-            entre 1200 y 1500 calorias diarias.
-          </P>
-        </View>
-        <View
-          style={[
-            styles.whiteFrame,
-            {
-              width: 240,
-              height: 180,
-              padding: 20,
-              margin: 10,
-              backgroundColor: 'white',
-            },
-          ]}
-        >
-          <H2 style={[styles.subTitle, { lineHeight: 50, margin: 0 }]}>
-            GUÍA A
-          </H2>
-          <P style={{ textAlign: 'center' }}>
-            Esta guía esta diseñada para personas con un requerimiento calórico
-            entre 1200 y 1500 calorias diarias.
-          </P>
-        </View>
-        <View
-          style={[
-            styles.whiteFrame,
-            {
-              width: 240,
-              height: 180,
-              padding: 20,
-              margin: 10,
-              backgroundColor: 'white',
-            },
-          ]}
-        >
-          <H2 style={[styles.subTitle, { lineHeight: 50, margin: 0 }]}>
-            GUÍA A
-          </H2>
-          <P style={{ textAlign: 'center' }}>
-            Esta guía esta diseñada para personas con un requerimiento calórico
-            entre 1200 y 1500 calorias diarias.
-          </P>
-        </View>
-        <View
-          style={[
-            styles.whiteFrame,
-            {
-              width: 240,
-              height: 180,
-              padding: 20,
-              margin: 10,
-              backgroundColor: 'white',
-            },
-          ]}
-        >
-          <H2 style={[styles.subTitle, { lineHeight: 50, margin: 0 }]}>
-            GUÍA A
-          </H2>
-          <P style={{ textAlign: 'center' }}>
-            Esta guía esta diseñada para personas con un requerimiento calórico
-            entre 1200 y 1500 calorias diarias.
-          </P>
+          <P style={styles.formHeadingStyle}>Genero</P>
+          <Picker
+            selectedValue={selectedValue}
+            style={{ height: 50 }}
+            onValueChange={(itemValue, itemIndex) =>
+              setSelectedValue(itemValue)
+            }
+          >
+            <Picker.Item label="Hombre" value="Hombre" />
+            <Picker.Item label="Mujer" value="Mujer" />
+          </Picker>
+          <P style={styles.formHeadingStyle}>Edad</P>
+          <TextInput
+            style={{ height: 40 }}
+            onChangeText={(text) => changeEdad(parseInt(text))}
+            value={edad.toString()}
+            keyboardType="numeric"
+          />
+          <P style={styles.formHeadingStyle}>Estatura en centímetros</P>
+          <TextInput
+            style={{ height: 40 }}
+            onChangeText={(text) => changeEstatura(parseInt(text))}
+            value={estatura.toString()}
+            keyboardType="numeric"
+          />
+          <P style={styles.formHeadingStyle}>Peso en kilogramos</P>
+          <TextInput
+            style={{ height: 40 }}
+            onChangeText={(text) => changePeso(parseInt(text))}
+            value={peso.toString()}
+            keyboardType="numeric"
+          />
+          <P style={styles.formHeadingStyle}>Tipo de alimentación</P>
+          <Picker
+            selectedValue={alimentacion}
+            style={{ height: 50 }}
+            onValueChange={(itemValue, itemIndex) => setAlimentacion(itemValue)}
+          >
+            <Picker.Item label="Omnivoro" value="Omnivoro" />
+            <Picker.Item
+              label="Basado en plantas (vegano)"
+              value="Basado en plantas (vegano)"
+            />
+          </Picker>
+          <View style={{ marginTop: 20, cursor: 'pointer' }}>
+            <Button
+              onPress={onPressCalcular}
+              title="Calcular"
+              color="#ffc439"
+            />
+          </View>
+
+          <View style={{ alignContent: 'center', alignItems: 'center' }}>
+            {tipo === 0 ? (
+              <View
+                style={[
+                  styles.whiteFrame,
+                  {
+                    width: 240,
+                    height: 180,
+                    padding: 20,
+                    margin: 10,
+                    backgroundColor: 'white',
+                  },
+                ]}
+              >
+                <H2 style={[styles.subTitle, styles.overrideSubTitle]}>
+                  GUÍA A
+                </H2>
+                <P style={{ textAlign: 'center', margin: 0, padding: 0 }}>
+                  Esta guía esta diseñada para personas con un requerimiento
+                  calórico entre 1200 y 1500 calorias diarias.
+                </P>
+              </View>
+            ) : null}
+
+            {tipo === 1 ? (
+              <View
+                style={[
+                  styles.whiteFrame,
+                  {
+                    width: 240,
+                    height: 180,
+                    padding: 20,
+                    margin: 10,
+                    backgroundColor: 'white',
+                  },
+                ]}
+              >
+                <H2 style={[styles.subTitle, styles.overrideSubTitle]}>
+                  GUÍA B
+                </H2>
+                <P style={{ textAlign: 'center' }}>
+                  Esta guía esta diseñada para personas con un requerimiento
+                  calórico entre 1500 y 1800 calorias diarias.
+                </P>
+              </View>
+            ) : null}
+
+            {tipo === 2 ? (
+              <View
+                style={[
+                  styles.whiteFrame,
+                  {
+                    width: 240,
+                    height: 180,
+                    padding: 20,
+                    margin: 10,
+                    backgroundColor: 'white',
+                  },
+                ]}
+              >
+                <H2 style={[styles.subTitle, styles.overrideSubTitle]}>
+                  GUÍA C
+                </H2>
+                <P style={{ textAlign: 'center' }}>
+                  Esta guía esta diseñada para personas con un requerimiento
+                  calórico entre 1800 y 2199 calorias diarias.
+                </P>
+              </View>
+            ) : null}
+
+            {tipo === 3 ? (
+              <View
+                style={[
+                  styles.whiteFrame,
+                  {
+                    width: 240,
+                    height: 180,
+                    padding: 20,
+                    margin: 10,
+                    backgroundColor: 'white',
+                  },
+                ]}
+              >
+                <H2 style={[styles.subTitle, styles.overrideSubTitle]}>
+                  GUÍA D
+                </H2>
+                <P style={{ textAlign: 'center' }}>
+                  Esta guía esta diseñada para personas con un requerimiento
+                  calórico entre 2200 y 2500 calorias diarias.
+                </P>
+              </View>
+            ) : null}
+
+            {tipo === 4 ? (
+              <View
+                style={[
+                  styles.whiteFrame,
+                  {
+                    width: 240,
+                    height: 180,
+                    padding: 20,
+                    margin: 10,
+                    backgroundColor: 'white',
+                  },
+                ]}
+              >
+                <H2 style={[styles.subTitle, styles.overrideSubTitle]}>
+                  GUÍA E
+                </H2>
+                <P style={{ textAlign: 'center' }}>
+                  Esta guía esta diseñada para personas con un requerimiento
+                  calórico entre 1200 y 1500 calorias diarias.
+                </P>
+              </View>
+            ) : null}
+
+            {tipo === 5 ? (
+              <View
+                style={[
+                  styles.whiteFrame,
+                  {
+                    width: 240,
+                    height: 180,
+                    padding: 20,
+                    margin: 10,
+                    backgroundColor: 'white',
+                  },
+                ]}
+              >
+                <H2 style={[styles.subTitle, styles.overrideSubTitle]}>
+                  GUÍA F
+                </H2>
+                <P style={{ textAlign: 'center' }}>
+                  Esta guía esta diseñada para personas con un requerimiento
+                  calórico entre 1500 y 1800 calorias diarias.
+                </P>
+              </View>
+            ) : null}
+
+            {tipo === 6 ? (
+              <View
+                style={[
+                  styles.whiteFrame,
+                  {
+                    width: 240,
+                    height: 180,
+                    padding: 20,
+                    margin: 10,
+                    backgroundColor: 'white',
+                  },
+                ]}
+              >
+                <H2 style={[styles.subTitle, styles.overrideSubTitle]}>
+                  GUÍA G
+                </H2>
+                <P style={{ textAlign: 'center' }}>
+                  Esta guía esta diseñada para personas con un requerimiento
+                  calórico entre 1800 y 2199 calorias diarias.
+                </P>
+              </View>
+            ) : null}
+
+            {tipo === 7 ? (
+              <View
+                style={[
+                  styles.whiteFrame,
+                  {
+                    width: 240,
+                    height: 180,
+                    padding: 20,
+                    margin: 10,
+                    backgroundColor: 'white',
+                  },
+                ]}
+              >
+                <H2 style={[styles.subTitle, styles.overrideSubTitle]}>
+                  GUÍA H
+                </H2>
+                <P style={{ textAlign: 'center' }}>
+                  Esta guía esta diseñada para personas con un requerimiento
+                  calórico entre 2200 y 2500 calorias diarias.
+                </P>
+              </View>
+            ) : null}
+          </View>
+          <PayPalButton
+            amount="20"
+            onSuccess={() => {}}
+            style={{ color: 'gold' }}
+          />
         </View>
       </ImageBackground>
       <ImageBackground
@@ -482,6 +625,13 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     textTransform: 'uppercase',
   },
+  formHeadingStyle: {
+    fontSize: 16,
+    textTransform: 'uppercase',
+    fontWeight: '600',
+    marginTop: 10,
+    marginBottom: 10,
+  },
   subTitle: {
     fontFamily: 'BryndanWrite',
     fontSize: 50,
@@ -490,6 +640,7 @@ const styles = StyleSheet.create({
     lineHeight: 1,
     textAlign: 'center',
   },
+  overrideSubTitle: { lineHeight: 50, margin: 0, padding: 0, marginBottom: 0 },
   whiteFrame: {
     backgroundColor: 'rgba(255,255,255,0.8)',
     paddingHorizontal: 20,
