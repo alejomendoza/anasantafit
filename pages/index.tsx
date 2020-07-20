@@ -329,7 +329,7 @@ export default function App() {
                   value="Basado en plantas (vegano)"
                 />
               </Picker>
-              <View style={{ marginTop: 20, cursor: 'pointer' }}>
+              <View style={{ marginTop: 20, cursor: 'pointer' } as any}>
                 <Button
                   onPress={onPressCalcular}
                   title="Calcular"
