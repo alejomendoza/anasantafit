@@ -253,7 +253,13 @@ export default function App() {
           <P style={styles.formHeadingStyle}>Genero</P>
           <Picker
             selectedValue={selectedValue}
-            style={{ height: 50 }}
+            style={{
+              height: 50,
+              padding: 10,
+              borderColor: '#ffc439',
+              borderWidth: 2,
+              borderRadius: 4,
+            }}
             onValueChange={(itemValue, itemIndex) =>
               setSelectedValue(itemValue)
             }
@@ -263,21 +269,39 @@ export default function App() {
           </Picker>
           <P style={styles.formHeadingStyle}>Edad</P>
           <TextInput
-            style={{ height: 40 }}
+            style={{
+              height: 40,
+              padding: 10,
+              borderColor: '#ffc439',
+              borderWidth: 2,
+              borderRadius: 4,
+            }}
             onChangeText={(text) => changeEdad(parseInt(text))}
             value={edad.toString()}
             keyboardType="numeric"
           />
           <P style={styles.formHeadingStyle}>Estatura en centímetros</P>
           <TextInput
-            style={{ height: 40 }}
+            style={{
+              height: 40,
+              padding: 10,
+              borderColor: '#ffc439',
+              borderWidth: 2,
+              borderRadius: 4,
+            }}
             onChangeText={(text) => changeEstatura(parseInt(text))}
             value={estatura.toString()}
             keyboardType="numeric"
           />
           <P style={styles.formHeadingStyle}>Peso en kilogramos</P>
           <TextInput
-            style={{ height: 40 }}
+            style={{
+              height: 40,
+              padding: 10,
+              borderColor: '#ffc439',
+              borderWidth: 2,
+              borderRadius: 4,
+            }}
             onChangeText={(text) => changePeso(parseInt(text))}
             value={peso.toString()}
             keyboardType="numeric"
@@ -285,7 +309,13 @@ export default function App() {
           <P style={styles.formHeadingStyle}>Tipo de alimentación</P>
           <Picker
             selectedValue={alimentacion}
-            style={{ height: 50 }}
+            style={{
+              height: 50,
+              padding: 10,
+              borderColor: '#ffc439',
+              borderWidth: 2,
+              borderRadius: 4,
+            }}
             onValueChange={(itemValue, itemIndex) => setAlimentacion(itemValue)}
           >
             <Picker.Item label="Omnivoro" value="Omnivoro" />
